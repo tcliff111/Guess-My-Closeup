@@ -35,7 +35,7 @@ class SoundsController < ApplicationController
 
 	def play
 
-		@sound = Sound.order('RANDOM()').limit(1).first
+		@sound = Sound.where("sounds.user_id != ?", current_user).order('RANDOM()').limit(1).first
 
 		if @sound
 			@choices = @sound.choices.shuffle

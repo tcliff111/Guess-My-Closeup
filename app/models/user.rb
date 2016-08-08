@@ -17,4 +17,14 @@ class User < ActiveRecord::Base
     	return correct_count
     end
 
+    def wrong_count
+    	wrong_count = 0
+    	self.answers.each do |answer|
+    		if !(answer.choice.correct)
+    			wrong_count = wrong_count + 1
+    		end
+    	end
+    	return wrong_count
+    end
+
 end
