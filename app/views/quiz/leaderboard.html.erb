@@ -1,0 +1,6 @@
+
+<h4>Leaderboard</h4>
+
+<% @users.each_with_index do |user, index| %>
+	<b><%= index+1 %> <%= user.email %> 
+<% end %>

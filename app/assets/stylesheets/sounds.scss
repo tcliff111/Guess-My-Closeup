@@ -1,0 +1,22 @@
+// Place all the styles related to the sounds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.choice {
+	background-color: red;
+	width: 215px;
+	height: 25px;
+	float: left;
+	margin: 10px 30px;
+}
+
+.correct {
+	color: green;
+	font-weight: 500;
+}
+
+.incorrect {
+	color: red;
+	font-weight: 500;
+}

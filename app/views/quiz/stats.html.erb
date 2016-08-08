@@ -1,0 +1,12 @@
+
+<p>Number of Correct Answers: <%= @correct_answers.count %></p>
+
+<p>Number of Incorrect Answers: <%= @incorrect_answers.count %></p>
+
+<p>Percentage: 
+<% if @correct_answers.count == 0 %>
+	<%= "0.00 %" %>
+<% else %>
+	<%= "#{@percentage}%" %>
+<% end %>
+</p>

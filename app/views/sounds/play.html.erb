@@ -1,0 +1,38 @@
+
+<% if flash[:your_answer] %>
+	<% if flash[:is_correct] %>
+		<p class="correct">
+		<%= "Your answer: #{flash[:your_answer]} was correct!" %>
+		</p>
+	<% else %>
+		<p class="incorrect">
+		<%= "Your answer: #{flash[:your_answer]} was incorrect.  The correct answer was #{flash[:correct_answer]}." %>
+		</p>
+	<% end %>
+<% end %>
+
+<% if @sound %>
+	<% if @sound.image %>
+	<%= image_tag @sound.image.url(:medium) %>
+	<% end %>
+
+	<% for choice in @choices %>
+		<%#button_to answers_url, :answer => { :choice => choice, :user => current_user }, :method=>:post  do %>
+		<%# button_to answers_url, {:answer => { :choice => choice, :user => current_user }} , :method=>:post do %>
+		<%# button_to answers_url, {:controller => "answers", :action => "create", :answer => { :choice => choice, :user => current_user }} , {:method=>:post} do  %>
+		<%= button_to choice.text, { :controller => "answers", :action => "create", :answer => { :choice_id => choice, :user_id => current_user }, :correct_answer => @correct_answer}, {:method => :post, :class => :choice} %>
+
+
+		<!-- <div class="choice">
+			<p><%= choice.text %></p>
+			<p><%= choice.correct %></p>
+		</div> -->
+		<% #end %>
+	<% end %>
+
+<% else %>
+	<%= "Out of images!!  Try again a different time or maybe" %>
+	<%= link_to "add more", new_sound_url %>
+<% end %>
+
+
