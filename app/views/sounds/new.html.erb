@@ -29,7 +29,7 @@
   <ul id="recordingslist"></ul> -->
   
 
-
+<p>Upload an image and insert the </p>
 
 
 <%= form_for @sound, html: {multipart: true} do |f| %>
@@ -38,20 +38,27 @@
 	<%= f.label "Close-up" %>
 	<%= f.file_field :image %>
 
+	<br />
+	<br />
+
+
 	<% @sound.choices.each_with_index do |choice, count| %>
 		<%= f.fields_for :choices, choice do |choice_form| %>
 			<% if choice.correct? %>
 				<%= choice_form.label "Correct Image Label" %>
+
 			<% else %>
 				<%= choice_form.label "Incorrect Image Label \##{count}" %>
 			<% end %>
-			
+			&nbsp;&nbsp;&nbsp;	
 			<%= choice_form.hidden_field :correct %>
 			<%= choice_form.text_field :text %>
 			<br />
 
 		<% end %>
 	<% end %>
+
+	<br />
 
 	<%= f.submit "Create Close-up" %>
 <% end %>
