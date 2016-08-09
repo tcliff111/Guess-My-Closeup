@@ -1,6 +1,9 @@
 class Sound < ActiveRecord::Base
 
 	has_many :choices
+	has_many :answers, through: :choices
+	has_many :users, through: :answers
+
 	belongs_to :user
 	accepts_nested_attributes_for :choices
 

@@ -35,7 +35,22 @@ class SoundsController < ApplicationController
 
 	def play
 
-		@sound = Sound.where("sounds.user_id != ?", current_user).order('RANDOM()').limit(1).first
+		#includes
+
+		# @sound = Sound.
+		# includes(:users).
+		# references(:users).
+		# #where("? NOT IN sounds.users", current_user).
+		# where("sounds.user_id != ? AND sounds.user_id NOT IN users.id", current_user).
+		# order('RANDOM()').
+		# limit(1).
+		# first
+
+		@sound = Sound.order('RANDOM()').limit(1).first
+
+		# if @sound.users contains current_user
+		# 	vd
+
 
 		if @sound
 			@choices = @sound.choices.shuffle
@@ -53,7 +68,7 @@ class SoundsController < ApplicationController
 	private
 
 	def sound_params
-		params[:sound].permit( :image, choices_attributes: [:text, :correct])
+		params[:sound].permit( :image, :user_id, choices_attributes: [:text, :correct])
 	end
 
 end
