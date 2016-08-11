@@ -17,9 +17,9 @@ class Sound < ActiveRecord::Base
 	validates :image, :presence => true
 
 	def s3_credentials
-		{:bucket => "guess-my-sound",
-		:access_key_id => "AKIAISF444EF5Y3PGBVA",
-		:secret_access_key => "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"}
+		{:bucket => "<BUCKET GOES HERE>",
+		:access_key_id => "<ID GOES HERE>",
+		:secret_access_key => "<KEY GOES HERE>"}
 	end
 
 end
